@@ -22,7 +22,8 @@ def apply_clearance(cart)
   cart.each {|grocery,value| cart[grocery][:price] = (cart[grocery][:price] * 0.8).round(2) if cart[grocery][:clearance] }
 end
 
-cart = consolidate_cart(cart: cart)
+def checkout(cart, coupons)
+ cart = consolidate_cart(cart: cart)
   cart = apply_coupons(cart: cart, coupons: coupons)
   cart = apply_clearance(cart: cart)
   total = 0
