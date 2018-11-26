@@ -15,12 +15,12 @@ def consolidate_cart(cart:[])
 end	
 
 def apply_coupons(cart:[], coupons:[])
-  # code here	  result = {}
-  # code here#
-  cart.each do |food, info|
-    coupons.each do |coupon|
-      if food == coupon[:item] && info[:count] >= coupon[:num]
-        info[:count] =  info[:count] - coupon[:num]
+	  result = {}
+ 
+    cart.each do |food, info|
+      coupons.each do |coupon|
+        if food == coupon[:item] && info[:count] >= coupon[:num]
+          info[:count] =  info[:count] - coupon[:num]
         if result["#{food} W/COUPON"]
           result["#{food} W/COUPON"][:count] += 1
         else
@@ -36,7 +36,7 @@ end
 
 def apply_clearance(cart:[])
   clearance_cart = {}
-  # code here	  # code here
+
   cart.each do |food, info|
     clearance_cart[food] = {}
     if info[:clearance] == true
@@ -51,8 +51,8 @@ def apply_clearance(cart:[])
 end	
 
 def checkout(cart: [], coupons: [])
-  # code here	  cart = consolidate_cart(cart: cart)
-end 	  cart = apply_coupons(cart: cart, coupons: coupons)
+  cart = consolidate_cart(cart: cart)
+  cart = apply_coupons(cart: cart, coupons: coupons)
   cart = apply_clearance(cart: cart)
   result = 0
   cart.each do |food, info|
